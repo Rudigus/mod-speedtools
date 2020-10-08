@@ -8,5 +8,10 @@ function calculate() {
     let startTime = startTimeInput.value
     let endTime = endTimeInput.value
     let runTime = endTime - startTime
-    runTimeParagraph.textContent = `Run Time: ${runTime}`
+
+    let hours = Math.floor(runTime / 3600)
+    let minutes = Math.floor(runTime / 60) - hours * 60
+    let seconds = Math.floor(runTime) - hours * 3600 - minutes * 60
+    let milliseconds = Math.round((runTime * 1000 - (hours * 3600 + minutes * 60 + seconds) * 1000) * 1000) / 1000
+    runTimeParagraph.textContent = `Run Time: ${hours}h ${minutes}m ${seconds}s ${milliseconds}ms`
 }
